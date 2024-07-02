@@ -4,7 +4,7 @@ import "./sass/main.scss";
 function App() {
   return (
     <>
-      <h1>Hello Insta downloader</h1>
+      <h1 className="font-allerta">Hello Insta downloader</h1>
     </>
   );
 }
