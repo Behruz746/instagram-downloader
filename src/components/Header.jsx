@@ -6,7 +6,7 @@ import { icons } from "../constans";
 function Header() {
   return (
     <header
-      className={`w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
+      className={`sticky top-0 left-0 bg-white z-[100] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
     >
       <div className={`${styles.container} flex items-center justify-between`}>
         <div className="flex items-center gap-[10px] cursor-pointer">
