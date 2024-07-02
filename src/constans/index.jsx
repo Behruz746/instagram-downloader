@@ -14,3 +14,5 @@ const icons = {
   instagram: "/img/svg/instagram-logo.svg",
   telegram: "/img/svg/telegram-logo.svg",
 };
+
+export { images, icons };

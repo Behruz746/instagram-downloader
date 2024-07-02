@@ -3,3 +3,12 @@
 @tailwind utilities;
 @import "./reset";
 @import "./font";
+
+body {
+  font-family: Allerta;
+  background-color: #fff;
+}
+
+.bg-linear-blue {
+  background: linear-gradient(104deg, #521ced 21.06%, #4a25b5 80.12%);
+}
