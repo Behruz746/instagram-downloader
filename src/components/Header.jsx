@@ -50,7 +50,7 @@ function Header() {
               menuToggle ? "w-full text-center" : ""
             } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
           >
-            Insta Downloader
+            Insta Downloader 
           </NavLink>
           <NavLink
             to="/"
