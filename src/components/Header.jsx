@@ -40,7 +40,7 @@ function Header() {
         <nav
           className={`${
             menuToggle
-              ? "flex flex-col justify-start gap-[0px] bg-[#ffffff] absolute top-[60px] left-[0] z-[100] w-full"
+              ? "flex flex-col justify-start gap-[0px] bg-[#ffffff] absolute top-[60px] left-[0] z-[100] w-full rounded-b-[16px] overflow-hidden"
               : "hidden"
           } sm:flex items-center justify-between sm:gap-[41px] sm:max-w-[470px]`}
         >
