@@ -7,6 +7,10 @@ function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
   const [langToggle, setLangToggle] = useState(false);
 
+  const langRemoveHandler = () => {
+    setLangToggle(false);
+  };
+
   useEffect(() => {
     function scroll(e) {
       const headerEl = document.querySelector("#header");
@@ -38,6 +42,10 @@ function Header() {
       id="header"
       className={`sticky top-0 left-0 bg-white z-[100] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
     >
+      <div
+        className={`${langToggle ? "over-box" : "hidden"}`}
+        onClick={langRemoveHandler}
+      ></div>
       <div
         className={`${styles.container} flex items-center justify-between relative`}
       >
@@ -77,8 +85,8 @@ function Header() {
           className={`
             ${
               menuToggle
-                ? "top-[60px] opacity-[1] z-[1] pointer-events-auto select-auto"
-                : "top-[40px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[0px] sm:opacity-[1] sm:z-[1] sm:pointer-events-auto sm:select-all sm:relative sm:flex-row"
+                ? "top-[60px] opacity-[1] z-[100] pointer-events-auto select-auto"
+                : "top-[40px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[0px] sm:opacity-[1] sm:z-[100] sm:pointer-events-auto sm:select-all sm:relative sm:flex-row"
             } ${
             langToggle ? "h-[500px]" : "h-[210px]"
           } absolute items-center sm:justify-between sm:gap-[41px] sm:max-w-[470px] flex sm:h-[100%] flex-col justify-start gap-[0px] bg-[#ffffff] left-[0]  w-full rounded-b-[16px] sm:rounded-[8px] overflow-hidden sm:overflow-visible ease-in duration-200`}
@@ -106,7 +114,7 @@ function Header() {
               )}
             </Fragment>
           ))}
-          <div className="flex flex-col relative w-full">
+          <div className="flex flex-col relative w-full z-[120]">
             <button
               className="flex items-center justify-center gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none"
               onClick={() => setLangToggle((prev) => !prev)}
@@ -135,6 +143,7 @@ function Header() {
               {lang.map((lang, idx) => (
                 <li
                   className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none"
+                  onClick={langRemoveHandler}
                   key={idx}
                 >
                   {lang.lang}
