@@ -19,6 +19,51 @@ const icons = {
   playIcon: "/img/svg/play.svg",
 };
 
+const menu = [
+  { text: "Download", link: "/" },
+  { text: "About", link: "/" },
+  { text: "Contect", link: "/" },
+];
+
+const lang = [
+  {
+    code: "en",
+    lang: "English",
+  },
+  {
+    code: "uz",
+    lang: "O’zbek",
+  },
+  {
+    code: "ru",
+    lang: "Русский",
+  },
+  {
+    code: "uk",
+    lang: "Українська",
+  },
+  {
+    code: "tr",
+    lang: "Türkçe",
+  },
+  {
+    code: "ar",
+    lang: "عربي",
+  },
+  {
+    code: "chi",
+    lang: "中国人",
+  },
+  {
+    code: "jp",
+    lang: "日本語",
+  },
+  {
+    code: "kr",
+    lang: "한국인",
+  },
+];
+
 const soicalContac = [
   { icon: icons.instagram, link: "#" },
   { icon: icons.telegram, link: "#" },
@@ -26,4 +71,4 @@ const soicalContac = [
   { icon: icons.webSiteLogo, link: "#" },
 ];
 
-export { images, icons, soicalContac };
+export { images, icons, soicalContac, menu, lang };

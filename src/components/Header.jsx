@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { styles, textStyles } from "../util/styles";
-import { icons } from "../constans";
+import { styles } from "../util/styles";
+import { icons, menu, lang } from "../constans";
 
 function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -42,25 +42,19 @@ function Header() {
             menuToggle
               ? "flex flex-col justify-start gap-[0px] bg-[#ffffff] absolute top-[60px] left-[0] z-[100] w-full"
               : "hidden"
-          } sm:flex items-center justify-between sm:gap-[20px] sm:max-w-[470px]`}
+          } sm:flex items-center justify-between sm:gap-[41px] sm:max-w-[470px]`}
         >
-          <NavLink
-            to="/"
-            className={`${
-              menuToggle ? "w-full text-center" : ""
-            } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
-          >
-            Insta Downloader
-          </NavLink>
-          <NavLink
-            to="/"
-            className={`${
-              menuToggle ? "w-full text-center" : ""
-            } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
-          >
-            About
-          </NavLink>
-
+          {menu.map((item, idx) => (
+            <NavLink
+              to="/"
+              className={`${
+                menuToggle ? "w-full text-center" : ""
+              } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
+              key={idx}
+            >
+              {item.text}
+            </NavLink>
+          ))}
           <div className="flex flex-col relative w-full">
             <button
               className="flex items-center justify-center gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer"
@@ -75,17 +69,13 @@ function Header() {
                 menuToggle ? "relative top-0" : "sm:absolute sm:top-[60px]"
               } ${
                 langToggle ? "flex" : "hidden"
-              } flex-col bg-linear-blue rounded-none sm:rounded-[8px] overflow-hidden`}
+              } flex-col bg-linear-blue rounded-none sm:rounded-[8px] overflow-auto h-[300px] sm:h-[150px] scroll-style`}
             >
-              <li className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8]">
-                English
-              </li>
-              <li className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8]">
-                Русский
-              </li>
-              <li className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8]">
-                O’zbekcha
-              </li>
+              {lang.map((lang, idx) => (
+                <li className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer">
+                  {lang.lang}
+                </li>
+              ))}
             </ul>
           </div>
         </nav>
