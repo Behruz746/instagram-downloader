@@ -21,7 +21,7 @@ function Home() {
             </div>
             <Input />
           </div>
-          {/* <div className="w-full block sm:flex justify-start sm:justify-center">
+          <div className="w-full block sm:flex justify-start sm:justify-center">
             <div className="flex max-w-[800px] w-full items-start  xs:items-center sm:items-start justify-center flex-col sm:flex-row gap-[20px]">
               <>
                 <Card />
@@ -55,7 +55,7 @@ function Home() {
                 </div>
               </>
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
       <About
