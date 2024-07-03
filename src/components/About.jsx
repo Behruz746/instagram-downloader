@@ -3,7 +3,7 @@ import { styles, textStyles } from "../util/styles";
 
 function About({ img, title, text, reverse }) {
   return (
-    <section className={`w-full ${styles.sectionMarginY}`}>
+    <section id="about" className={`w-full ${styles.sectionMarginY}`}>
       <div
         className={`${styles.container} flex-col flex items-start ${
           reverse ? "sm:flex-row-reverse" : "sm:flex-row"

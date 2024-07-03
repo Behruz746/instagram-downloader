@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { styles } from "../util/styles";
 import { icons, menu, lang } from "../constans";
@@ -7,14 +7,44 @@ function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
   const [langToggle, setLangToggle] = useState(false);
 
+  useEffect(() => {
+    function scroll(e) {
+      const headerEl = document.querySelector("#header");
+      const currentScrollPosition = window.pageYOffset; // toFixed olib tashlandi
+      setLangToggle(false);
+      setMenuToggle(false);
+
+      if (currentScrollPosition >= 50) {
+        // scrollY o'rniga currentScrollPosition ishlatildi
+        headerEl.style.paddingTop = "5px";
+        headerEl.style.paddingBottom = "5px";
+      } else if (currentScrollPosition < 50) {
+        // scrollY o'rniga currentScrollPosition ishlatildi
+        headerEl.style.paddingTop = "15px";
+        headerEl.style.paddingBottom = "15px";
+      }
+    }
+
+    window.addEventListener("scroll", scroll);
+
+    // Event listenerni to'g'ri olib tashlash
+    return () => {
+      window.removeEventListener("scroll", scroll);
+    };
+  }, []); // Bo'sh array bilan useEffect faqat bir marta ishga tushadi
+
   return (
     <header
+      id="header"
       className={`sticky top-0 left-0 bg-white z-[100] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
     >
       <div
         className={`${styles.container} flex items-center justify-between relative`}
       >
-        <div className="flex items-center gap-[10px] cursor-pointer">
+        <a
+          href="#downloader"
+          className="flex items-center gap-[10px] cursor-pointer"
+        >
           <img
             width={62}
             height={44}
@@ -25,35 +55,56 @@ function Header() {
           <h1 className="font-allerta text-[18px] sm:text-[22px] font-normal leading-[100%] text-dark">
             Insta Downloader
           </h1>
-        </div>
+        </a>
 
         <div className={`${menuToggle ? "flex" : "sm:hidden"} sm:hidden`}>
           <button
             type="button"
+            id="menu-btn"
             className="flex justify-center items-center p-[15px]"
             onClick={() => setMenuToggle((prev) => !prev)}
           >
-            <img width={24} height={24} src={icons.menuIcon} alt="menu icon" />
+            <img
+              width={24}
+              height={24}
+              src={menuToggle ? icons.clear : icons.menuIcon}
+              alt="menu icon"
+            />
           </button>
         </div>
 
         <nav
-          className={`${
-            menuToggle
-              ? "flex flex-col justify-start gap-[0px] bg-[#ffffff] absolute top-[60px] left-[0] z-[100] w-full rounded-b-[16px] overflow-hidden"
-              : "hidden"
-          } sm:flex items-center justify-between sm:gap-[41px] sm:max-w-[470px]`}
+          className={`
+            ${
+              menuToggle
+                ? "top-[60px] opacity-[1] z-[1] pointer-events-auto select-auto"
+                : "top-[40px] opacity-[0] -z-[1] pointer-events-none select-none"
+            } ${
+            langToggle ? "h-[500px]" : "h-[210px]"
+          }   absolute items-center sm:justify-between sm:gap-[41px] sm:max-w-[470px] flex sm:h-[100%] flex-col justify-start gap-[0px] bg-[#ffffff] left-[0]  w-full rounded-b-[16px] overflow-hidden ease-in duration-200`}
         >
           {menu.map((item, idx) => (
-            <NavLink
-              to="/"
-              className={`${
-                menuToggle ? "w-full text-center" : ""
-              } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
-              key={idx}
-            >
-              {item.text}
-            </NavLink>
+            <Fragment key={idx}>
+              {item.page ? (
+                <NavLink
+                  to={item.link}
+                  className={`${
+                    menuToggle ? "w-full text-center" : ""
+                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
+                >
+                  {item.text}
+                </NavLink>
+              ) : (
+                <a
+                  href={item.link}
+                  className={`${
+                    menuToggle ? "w-full text-center" : ""
+                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
+                >
+                  {item.text}
+                </a>
+              )}
+            </Fragment>
           ))}
           <div className="flex flex-col relative w-full">
             <button
@@ -61,15 +112,25 @@ function Header() {
               onClick={() => setLangToggle((prev) => !prev)}
             >
               English
-              <img width={24} height={24} src={icons.arrow} alt="arrow down" />
+              <img
+                width={24}
+                height={24}
+                src={icons.arrow}
+                className={` ease-in duration-100 ${
+                  langToggle ? "rotate-[180deg]" : "rotate-[0deg]"
+                }`}
+                alt="arrow down"
+              />
             </button>
 
             <ul
               className={`w-full ${
-                menuToggle ? "relative top-0" : "sm:absolute sm:top-[60px]"
+                menuToggle ? "relative top-0" : "sm:top-[60px]"
               } ${
-                langToggle ? "flex" : "hidden"
-              } flex-col bg-linear-blue rounded-none sm:rounded-[8px] overflow-auto h-[300px] sm:h-[150px] scroll-style`}
+                langToggle
+                  ? "top-[0px] opacity-[1] z-[1] pointer-events-auto select-auto"
+                  : "-top-[20px] opacity-[0] -z-[1] pointer-events-none select-none"
+              } flex-col sm:absolute bg-linear-blue rounded-none sm:rounded-[8px] overflow-auto h-[300px] sm:h-[150px] scroll-style  ease-in duration-200`}
             >
               {lang.map((lang, idx) => (
                 <li className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer">

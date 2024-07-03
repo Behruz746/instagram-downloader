@@ -8,6 +8,7 @@ function Home() {
   return (
     <>
       <section
+        id="downloader"
         className={`w-full mt-[30px] sm:mt-[60px] lg:mt-[100px] ${styles.sectionMarginY}`}
       >
         <div

@@ -20,9 +20,9 @@ const icons = {
 };
 
 const menu = [
-  { text: "Download", link: "/" },
-  { text: "About", link: "/" },
-  { text: "Contect", link: "/" },
+  { text: "Download", link: "#downloader" },
+  { text: "About", link: "#about" },
+  { text: "Contect", link: "/", page: true },
 ];
 
 const lang = [
