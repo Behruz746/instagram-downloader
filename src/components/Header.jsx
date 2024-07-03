@@ -4,8 +4,8 @@ import { styles, textStyles } from "../util/styles";
 import { icons } from "../constans";
 
 function Header() {
-  const [menuToggle, setMenuToggle] = useState(true);
-  const [langToggle, setLangToggle] = useState(true);
+  const [menuToggle, setMenuToggle] = useState(false);
+  const [langToggle, setLangToggle] = useState(false);
 
   return (
     <header
@@ -42,7 +42,7 @@ function Header() {
             menuToggle
               ? "flex flex-col justify-start gap-[0px] bg-[#ffffff] absolute top-[60px] left-[0] z-[100] w-full"
               : "hidden"
-          } sm:flex items-center justify-between sm:gap-[20px] sm:max-w-[470px] bg-[red]`}
+          } sm:flex items-center justify-between sm:gap-[20px] sm:max-w-[470px]`}
         >
           <NavLink
             to="/"
@@ -50,7 +50,7 @@ function Header() {
               menuToggle ? "w-full text-center" : ""
             } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
           >
-            Insta Downloader 
+            Insta Downloader
           </NavLink>
           <NavLink
             to="/"
