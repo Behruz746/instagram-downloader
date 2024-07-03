@@ -14,26 +14,33 @@ function Header() {
             width={62}
             height={44}
             src={icons.webLogo}
+            className="w-[50px] h-[32px] sm:w-[63px] sm:h-[44px]"
             alt="insta downloader logo"
           />
-          <h1 className="font-allerta text-[22px] font-normal leading-[100%] text-dark">
+          <h1 className="font-allerta text-[18px] sm:text-[22px] font-normal leading-[100%] text-dark">
             Insta Downloader
           </h1>
         </div>
 
-        <nav className="flex items-center justify-between gap-[20px] max-w-[531px] w-full">
+        <div className="flex sm:hidden">
+          <button className="flex justify-center items-center p-[15px]">
+            <img width={24} height={24} src={icons.menuIcon} alt="menu icon" />
+          </button>
+        </div>
+
+        <nav className="hidden sm:flex items-center justify-between gap-[20px] max-w-[350px] sm:max-w-[470px] w-full">
           <NavLink
             to="/"
             className={`font-allerta text-dark  ${textStyles.text2} cursor-pointer hover:underline`}
           >
             Insta Downloader
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/"
             className={`font-allerta text-dark  ${textStyles.text2} cursor-pointer hover:underline`}
           >
             History
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/"
             className={`font-allerta text-dark  ${textStyles.text2} cursor-pointer hover:underline`}

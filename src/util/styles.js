@@ -1,5 +1,5 @@
 const styles = {
-  container: "max-w-[1230px] w-full m-auto px-[15px]",
+  container: "max-w-[1230px] w-full m-auto px-[10px] sm:px-[15px]",
   borderDarkTop:
     "border-[1px] border-solid border-[#FF5B79] border-b-[0px] border-x-[0px]",
   borderDarkBottom:
@@ -9,10 +9,11 @@ const styles = {
 
 const textStyles = {
   title:
-    "text-[22px] leading-[33px] sm:text-[42px] font-normal sm:leading-[53px]",
-  title2: "text-[32px] font-normal leading-[53px]",
-  text: "text-[22px] font-normal leading-[40px]",
-  text2: "text-[18px] font-normal leading-[53px]",
+    "text-[30px] leading-[38px] sm:text-[42px] font-normal sm:leading-[53px]",
+  title2:
+    "text-[24px] leading-[33px] sm:text-[32px] font-normal sm:leading-[53px]",
+  text: "text-[18px] leading-[33px]  sm:text-[22px] font-normal sm:leading-[40px]",
+  text2: "text-[14px] sm:text-[18px] font-normal leading-[53px]",
   textSmall: "text-[16px] font-normal leading-[100%]",
 };
 

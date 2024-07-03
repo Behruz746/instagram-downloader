@@ -5,6 +5,7 @@ const images = {
 
 const icons = {
   titleLogo: "/img/svg/title-logo.svg",
+  menuIcon: "/img/svg/menu-icon.svg",
   webLogo: "/img/svg/web-logo.svg",
   arrow: "/img/svg/arrow-icon.svg",
   webSiteLogo: "/img/svg/behruz-logo.svg",

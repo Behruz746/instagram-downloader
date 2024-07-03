@@ -11,29 +11,51 @@ function Home() {
         className={`w-full mt-[30px] sm:mt-[60px] lg:mt-[100px] ${styles.sectionMarginY}`}
       >
         <div
-          className={`${styles.container} flex flex-col items-start gap-[20px] sm:gap-[40px]`}
+          className={`max-w-[1230px] w-full m-auto flex flex-col items-start gap-[20px] sm:gap-[40px]`}
         >
-          <div className="max-w-[608px]">
-            <h1 className={`font-allerta text-dark ${textStyles.title}`}>
-              Download Insta reels, post, story and IGTV
-            </h1>
-          </div>
-          <Input />
-          <div className="w-full flex justify-center">
-            <div className="flex items-start gap-[20px]">
-              <Card />
-              <div className="flex flex-col gap-[15px]">
-                <button className="flex items-center justify-between gap-[8px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]">
-                  <img width={24} height={24} src={icons.downloadIcon} alt="download icon" />
-                  Download video
-                </button>
-                <button className="flex items-center justify-between gap-[8px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]">
-                  <img width={24} height={24} src={icons.downloadIcon} alt="download icon" />
-                  Download image
-                </button>
-              </div>
+          <div className="w-full px-[10px] sm:px-[15px] flex flex-col items-start gap-[20px] sm:gap-[40px]">
+            <div className="max-w-[608px]">
+              <h1 className={`font-allerta text-dark ${textStyles.title}`}>
+                Download Insta reels, post, story and IGTV
+              </h1>
             </div>
+            <Input />
           </div>
+          {/* <div className="w-full block sm:flex justify-start sm:justify-center">
+            <div className="flex max-w-[800px] w-full items-start  xs:items-center sm:items-start justify-center flex-col sm:flex-row gap-[20px]">
+              <>
+                <Card />
+                <div className="flex flex-col gap-[15px] w-full sm:max-w-[250px] px-[10px] sm:px-[15px]">
+                  <a
+                    href="../../public/photo_2024-07-03_14-13-48.jpg"
+                    className="flex items-center justify-center gap-[10px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]"
+                    download={true}
+                  >
+                    <img
+                      width={24}
+                      height={24}
+                      src={icons.downloadIcon}
+                      alt="download icon"
+                    />
+                    Download video
+                  </a>
+                  <a
+                    href="../../public/photo_2024-07-03_14-13-48.jpg"
+                    className="flex items-center justify-center gap-[10px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]"
+                    download={true}
+                  >
+                    <img
+                      width={24}
+                      height={24}
+                      src={icons.downloadIcon}
+                      alt="download icon"
+                    />
+                    Download image
+                  </a>
+                </div>
+              </>
+            </div>
+          </div> */}
         </div>
       </section>
       <About
