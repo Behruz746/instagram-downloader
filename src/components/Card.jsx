@@ -1,7 +1,7 @@
 import React from "react";
 import { icons } from "../constans";
 
-const img = "../../public/photo_2024-07-03_14-13-48.jpg";
+const img = "/img/photo_2024-07-03_14-13-48.jpg";
 
 function Card() {
   return (

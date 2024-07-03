@@ -24,7 +24,7 @@ function Footer() {
           </h2>
         </div>
 
-        <nav className="flex items-center justify-between gap-[10px] max-w-[300px]  sm:max-w-[206px] w-full">
+        <nav className="flex items-center justify-between gap-[10px] max-w-[250px]  sm:max-w-[206px] w-full">
           <NavLink
             to="/"
             className="font-allerta text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer"
