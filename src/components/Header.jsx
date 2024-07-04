@@ -140,7 +140,7 @@ function Header() {
 
           <div className="flex flex-col relative w-full z-[120] sm:max-w-[128px]">
             <button
-              className="flex items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none"
+              className={`flex items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none `}
               onClick={() => setLangToggle((prev) => !prev)}
             >
               English
@@ -154,26 +154,31 @@ function Header() {
                 alt="arrow down"
               />
             </button>
-
-            <ul
+            <div
               className={`w-full ${
                 menuToggle ? "relative top-0" : "sm:top-[60px]"
               } ${
                 langToggle
                   ? "top-[0px] opacity-[1] z-[1] pointer-events-auto select-auto"
                   : "-top-[20px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[60px]"
-              } flex-col sm:absolute bg-linear-blue rounded-none sm:rounded-[8px] overflow-auto h-[300px] sm:h-[150px] scroll-style  ease-in duration-200`}
+              } flex-col sm:absolute bg-linear-blue rounded-none sm:rounded-[8px] overflow-hidden h-[300px] sm:h-[150px] ease-in duration-200`}
             >
-              {languages.map((lang, idx) => (
-                <li
-                  className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none"
-                  onClick={() => changeLangHandler(lang.code)}
-                  key={idx}
-                >
-                  {lang.name}
-                </li>
-              ))}
-            </ul>
+              <ul
+                className={`overflow-auto h-[300px] sm:h-[150px] ease-in duration-200 ${
+                  currentLang.dir ? "scroll-style-r" : "scroll-style-l"
+                }`}
+              >
+                {languages.map((lang, idx) => (
+                  <li
+                    className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none"
+                    onClick={() => changeLangHandler(lang.code)}
+                    key={idx}
+                  >
+                    {lang.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </nav>
       </div>
