@@ -20,48 +20,21 @@ const icons = {
 };
 
 const menu = [
-  { text: "Download", link: "#downloader" },
-  { text: "About", link: "#about" },
+  { text: "home-page", link: "#downloader" },
+  { text: "about-page", link: "#about" },
   { text: "Contect", link: "/", page: true },
 ];
 
-const lang = [
-  {
-    code: "en",
-    lang: "English",
-  },
-  {
-    code: "uz",
-    lang: "O’zbek",
-  },
-  {
-    code: "ru",
-    lang: "Русский",
-  },
-  {
-    code: "uk",
-    lang: "Українська",
-  },
-  {
-    code: "tr",
-    lang: "Türkçe",
-  },
-  {
-    code: "ar",
-    lang: "عربي",
-  },
-  {
-    code: "chi",
-    lang: "中国人",
-  },
-  {
-    code: "jp",
-    lang: "日本語",
-  },
-  {
-    code: "kr",
-    lang: "한국인",
-  },
+const languages = [
+  { code: "en", name: "English", countryCode: "gb" },
+  { code: "uz", name: "O'zbekcha", countryCode: "uz" },
+  { code: "ru", name: "Русский", countryCode: "ru" },
+  { code: "uk", name: "Українська", countryCode: "ua" },
+  { code: "tr", name: "Türkçe", countryCode: "tr" },
+  { code: "ar", name: "العربية", countryCode: "sa", dir: "rtl" },
+  { code: "chi", name: "中文", countryCode: "cn" },
+  { code: "jp", name: "にほんご", countryCode: "jp" },
+  { code: "kr", name: "한국어", countryCode: "kr" },
 ];
 
 const soicalContac = [
@@ -71,4 +44,4 @@ const soicalContac = [
   { icon: icons.webSiteLogo, link: "#" },
 ];
 
-export { images, icons, soicalContac, menu, lang };
+export { images, icons, soicalContac, menu, languages };

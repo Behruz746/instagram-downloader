@@ -16,26 +16,33 @@ const langCode = () => {
 const initialState = {
   language: langCode(),
   langToggle: false,
+  menuToggle: false,
 };
 
 export const langSlice = createSlice({
   name: "lang",
   initialState,
   reducers: {
-    toggleHandler: (state) => {
+    toggleLangHandler: (state) => {
       state.langToggle = !state.langToggle;
+    },
+    toggleMenuHandler: (state) => {
+      state.menuToggle = !state.menuToggle;
     },
     changeLang: (state, action) => {
       const newLang = action.payload;
-      i18next.changeLanguage(newLang.countryCode); // Tilni yangilash
-      state.language = newLang.title; // Tilni Redux store ga saqlash
-      state.langToggle = false; // LangToggle ni o'chirish
-    },
-    removeLang: (state) => {
+      i18next.changeLanguage(newLang.countryCode);
+      state.language = newLang.name;
       state.langToggle = false;
+    },
+    remove: (state) => {
+      state.langToggle = false;
+      state.menuToggle = false;
     },
   },
 });
 
-export const { toggleHandler, changeLang, removeLang } = langSlice.actions;
+export const { toggleLangHandler, toggleMenuHandler, changeLang, remove } =
+  langSlice.actions;
+
 export default langSlice.reducer;

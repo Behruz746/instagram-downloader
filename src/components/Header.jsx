@@ -1,18 +1,39 @@
 import React, { useState, Fragment, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 import { styles } from "../util/styles";
-import { icons, menu, lang } from "../constans";
+import { icons, menu, languages } from "../constans";
 
 function Header() {
+  const { t } = useTranslation();
   const [menuToggle, setMenuToggle] = useState(false);
   const [langToggle, setLangToggle] = useState(false);
+  const currentLangCode = Cookies.get("i18next") || "en";
+  const currentLang = languages.find((l) => l.code === currentLangCode);
 
-  const langRemoveHandler = () => {
+  const menuRemoveHandler = () => {
     setLangToggle(false);
+    setMenuToggle(false);
+  };
+
+  // textni o'ng taraftan qilish va titleni ozgartirish
+  useEffect(() => {
+    if (currentLang && currentLang.dir) {
+      document.body.dir = currentLang.dir;
+    } else {
+      document.body.dir = "ltr";
+    }
+  }, [currentLang, t]);
+
+  const changeLangHandler = (code) => {
+    setLangToggle(false);
+    i18next.changeLanguage(code);
   };
 
   useEffect(() => {
-    function scroll(e) {
+    function scroll() {
       const headerEl = document.querySelector("#header");
       const currentScrollPosition = window.pageYOffset; // toFixed olib tashlandi
       setLangToggle(false);
@@ -43,8 +64,8 @@ function Header() {
       className={`sticky top-0 left-0 bg-white z-[100] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
     >
       <div
-        className={`${langToggle ? "over-box" : "hidden"}`}
-        onClick={langRemoveHandler}
+        className={`${langToggle || menuToggle ? "over-box" : "hidden"}`}
+        onClick={menuRemoveHandler}
       ></div>
       <div
         className={`${styles.container} flex items-center justify-between relative`}
@@ -85,11 +106,11 @@ function Header() {
           className={`
             ${
               menuToggle
-                ? "top-[60px] opacity-[1] z-[100] pointer-events-auto select-auto"
-                : "top-[40px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[0px] sm:opacity-[1] sm:z-[100] sm:pointer-events-auto sm:select-all sm:relative sm:flex-row"
+                ? "top-[60px] opacity-[1] z-[100] pointer-events-auto"
+                : "top-[40px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[0px] sm:opacity-[1] sm:z-[100] sm:pointer-events-auto sm:select-all sm:relative sm:flex-row sm:max-w-[800px] sm:w-full"
             } ${
             langToggle ? "h-[500px]" : "h-[210px]"
-          } absolute items-center sm:justify-between sm:gap-[41px] sm:max-w-[470px] flex sm:h-[100%] flex-col justify-start gap-[0px] bg-[#ffffff] left-[0]  w-full rounded-b-[16px] sm:rounded-[8px] overflow-hidden sm:overflow-visible ease-in duration-200`}
+          } absolute items-center sm:justify-end sm:gap-[41px] sm:max-w-[470px] flex sm:h-[100%] flex-col justify-start gap-[0px] bg-[#ffffff] left-[0]  w-full rounded-b-[16px] sm:rounded-[8px] overflow-hidden sm:overflow-visible ease-in duration-200`}
         >
           {menu.map((item, idx) => (
             <Fragment key={idx}>
@@ -98,25 +119,28 @@ function Header() {
                   to={item.link}
                   className={`${
                     menuToggle ? "w-full text-center" : ""
-                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
+                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
+                  onClick={menuRemoveHandler}
                 >
-                  {item.text}
+                  {t(item.text)}
                 </NavLink>
               ) : (
                 <a
                   href={item.link}
                   className={`${
                     menuToggle ? "w-full text-center" : ""
-                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline`}
+                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
+                  onClick={menuRemoveHandler}
                 >
-                  {item.text}
+                  {t(item.text)}
                 </a>
               )}
             </Fragment>
           ))}
-          <div className="flex flex-col relative w-full z-[120]">
+
+          <div className="flex flex-col relative w-full z-[120] sm:max-w-[128px]">
             <button
-              className="flex items-center justify-center gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none"
+              className="flex items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none"
               onClick={() => setLangToggle((prev) => !prev)}
             >
               English
@@ -140,13 +164,13 @@ function Header() {
                   : "-top-[20px] opacity-[0] -z-[1] pointer-events-none select-none sm:top-[60px]"
               } flex-col sm:absolute bg-linear-blue rounded-none sm:rounded-[8px] overflow-auto h-[300px] sm:h-[150px] scroll-style  ease-in duration-200`}
             >
-              {lang.map((lang, idx) => (
+              {languages.map((lang, idx) => (
                 <li
                   className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none"
-                  onClick={langRemoveHandler}
+                  onClick={() => changeLangHandler(lang.code)}
                   key={idx}
                 >
-                  {lang.lang}
+                  {lang.name}
                 </li>
               ))}
             </ul>
