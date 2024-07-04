@@ -22,7 +22,7 @@ const icons = {
 const menu = [
   { text: "home-page", link: "#downloader" },
   { text: "about-page", link: "#about" },
-  { text: "Contect", link: "/", page: true },
+  { text: "contact-page", link: "/", page: true },
 ];
 
 const languages = [
@@ -44,4 +44,39 @@ const soicalContac = [
   { icon: icons.webSiteLogo, link: "#" },
 ];
 
-export { images, icons, soicalContac, menu, languages };
+const selectLangSwitch = (currnetLang, setCountry) => {
+  switch (currnetLang) {
+    case "en":
+      setCountry("English");
+      break;
+    case "uz":
+      setCountry("O'zbekcha");
+      break;
+    case "ru":
+      setCountry("Русский");
+      break;
+    case "uk":
+      setCountry("Українська");
+      break;
+    case "tr":
+      setCountry("Türkçe");
+      break;
+    case "ar":
+      setCountry("العربية");
+      break;
+    case "chi":
+      setCountry("中文");
+      break;
+    case "jp":
+      setCountry("にほんご");
+      break;
+    case "kr":
+      setCountry("한국어");
+      break;
+    default:
+      setCountry("none");
+      break;
+  }
+};
+
+export { images, icons, soicalContac, menu, languages, selectLangSwitch };

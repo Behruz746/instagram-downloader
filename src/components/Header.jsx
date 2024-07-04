@@ -4,12 +4,13 @@ import i18next from "i18next";
 import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 import { styles } from "../util/styles";
-import { icons, menu, languages } from "../constans";
+import { icons, menu, languages, selectLangSwitch } from "../constans";
 
 function Header() {
   const { t } = useTranslation();
   const [menuToggle, setMenuToggle] = useState(false);
   const [langToggle, setLangToggle] = useState(false);
+  const [country, setCountry] = useState("English");
   const currentLangCode = Cookies.get("i18next") || "en";
   const currentLang = languages.find((l) => l.code === currentLangCode);
 
@@ -18,8 +19,8 @@ function Header() {
     setMenuToggle(false);
   };
 
-  // textni o'ng taraftan qilish va titleni ozgartirish
   useEffect(() => {
+    selectLangSwitch(currentLangCode, setCountry);
     if (currentLang && currentLang.dir) {
       document.body.dir = currentLang.dir;
     } else {
@@ -56,7 +57,7 @@ function Header() {
     return () => {
       window.removeEventListener("scroll", scroll);
     };
-  }, []); // Bo'sh array bilan useEffect faqat bir marta ishga tushadi
+  }, []);
 
   return (
     <header
@@ -138,12 +139,12 @@ function Header() {
             </Fragment>
           ))}
 
-          <div className="flex flex-col relative w-full z-[120] sm:max-w-[128px]">
+          <div className="flex flex-col relative w-full z-[120] sm:max-w-[150px]">
             <button
-              className={`flex items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none `}
+              className={`flex  items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none`}
               onClick={() => setLangToggle((prev) => !prev)}
             >
-              English
+              {country}
               <img
                 width={24}
                 height={24}

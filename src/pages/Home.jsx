@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import getVid from "../service/video";
+import { useTranslation } from "react-i18next";
 import { icons, images } from "../constans";
 import { styles, textStyles } from "../util/styles";
 import { Card, About } from "../components";
 import { Input } from "../ui";
 
 function Home() {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    getVid();
+  }, []);
+
   return (
     <>
       <section
@@ -17,7 +25,7 @@ function Home() {
           <div className="w-full px-[10px] sm:px-[15px] flex flex-col items-start gap-[20px] sm:gap-[40px]">
             <div className="max-w-[608px]">
               <h1 className={`font-allerta text-dark ${textStyles.title}`}>
-                Download Insta reels, post, story and IGTV
+                {t("input-title")}
               </h1>
             </div>
             <Input />
@@ -38,7 +46,7 @@ function Home() {
                       src={icons.downloadIcon}
                       alt="download icon"
                     />
-                    Download video
+                    {t("download-text")} video
                   </a>
                   <a
                     href="../../public/photo_2024-07-03_14-13-48.jpg"
@@ -51,7 +59,7 @@ function Home() {
                       src={icons.downloadIcon}
                       alt="download icon"
                     />
-                    Download image
+                    {t("download-text")} image
                   </a>
                 </div>
               </>
@@ -61,18 +69,14 @@ function Home() {
       </section>
       <About
         img={images.imgAbout1}
-        title={"Insta Downloader - Online  Downloader"}
-        text={
-          "How to download Instagram photos and videos? How to download videos from Instagram privately? These are the questions that many Instagram users are interested in. In this article I will show you how to download photos and videos from Instagram using the online Insta Downloader tool."
-        }
+        title={"about-down-title"}
+        text={"about-down-text"}
         reverse={true}
       />
       <About
         img={images.imgAbout2}
-        title={"What can Insta Downloader do?"}
-        text={
-          "Insta Downloader is an Instagram downloader, allow to download content (videos, photos, story, Insta reels, IGTV) from Instagram in best quality. Download Instagram photos and videos on web browser, support any device PC, tablet, iPhone, Android."
-        }
+        title={"about-can-title"}
+        text={"about-can-text"}
       />
     </>
   );

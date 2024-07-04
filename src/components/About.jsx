@@ -1,7 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styles, textStyles } from "../util/styles";
 
 function About({ img, title, text, reverse }) {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className={`w-full ${styles.sectionMarginY}`}>
       <div
@@ -15,9 +18,9 @@ function About({ img, title, text, reverse }) {
               textStyles.title2
             }`}
           >
-            {title}
+            {t(title)}
           </h1>
-          <p className={`${textStyles.text}`}>{text}</p>
+          <p className={`${textStyles.text}`}>{t(text)}</p>
         </div>
         <div className="m-auto sm:m-[0] max-w-[389px] h-auto">
           <img

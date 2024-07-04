@@ -1,9 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { styles } from "../util/styles";
 import { icons, soicalContac } from "../constans";
 import { NavLink } from "react-router-dom";
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer
       className={`${styles.borderDarkTop} w-full mt-[30px] sm:mt-[60px] lg:mt-[113px] py-[8px] sm:py-[16px]`}
@@ -29,13 +32,13 @@ function Footer() {
             to="/"
             className="font-allerta text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer"
           >
-            Privacy Policy
+            {t("privacy-policy-title")}
           </NavLink>
           <NavLink
             to="/"
             className="font-allerta text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer"
           >
-            Contect
+            {t("contact-page")}
           </NavLink>
         </nav>
 

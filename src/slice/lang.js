@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import i18next from "i18next";
+import Cookies from "js-cookie";
 
 const langCode = () => {
-  let lang = localStorage.getItem("i18nextLng");
+  let lang = Cookies.get("i18next");
   if (lang === "uz") {
     lang = "O‘zb";
   } else if (lang === "en") {
