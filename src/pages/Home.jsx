@@ -1,23 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getReelStart, getReelSuccess, getReelFailure } from "../slice/reels";
-import ProjectData from "../service/video";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { icons, images } from "../constans";
+import { images } from "../constans";
 import { styles, textStyles } from "../util/styles";
-import { Card, About, VideoDetail } from "../components";
+import { About, VideoDetail } from "../components";
 import { Input, Loader } from "../ui";
-
-// https://www.instagram.com/reels/C0UWodpJogI/
 
 function Home() {
   const { t } = useTranslation();
   const { reel, isLoad } = useSelector((state) => state.reels);
-  const dispatch = useDispatch();
-
   console.log(isLoad);
-
-  // console.log(reel);
 
   return (
     <>
@@ -36,7 +28,6 @@ function Home() {
             </div>
             <Input />
           </div>
-
           {reel === null ? null : <>{isLoad ? <Loader /> : <VideoDetail />}</>}
         </div>
       </section>

@@ -21,6 +21,7 @@ function Input() {
         e.preventDefault();
         dispatch(setCode(isValue));
         dispatch(getReelStart());
+        setValue("");
         const fetching = async () => {
           try {
             const { data } = await ProjectData.getVideo(isValue);
@@ -57,7 +58,7 @@ function Input() {
           type="button"
           className={` ${
             !isValue ? "opacity-0" : "opacity-[1]"
-          } p-[15px] cursor-pointer`}
+          } p-[15px]  cursor-pointer`}
           onClick={() => setValue("")}
         >
           <img width={32} height={32} src={icons.clear} alt="remove icon" />
