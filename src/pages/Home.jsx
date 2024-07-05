@@ -1,17 +1,23 @@
 import React, { useEffect } from "react";
-import getVid from "../service/video";
+import { useDispatch, useSelector } from "react-redux";
+import { getReelStart, getReelSuccess, getReelFailure } from "../slice/reels";
+import ProjectData from "../service/video";
 import { useTranslation } from "react-i18next";
 import { icons, images } from "../constans";
 import { styles, textStyles } from "../util/styles";
-import { Card, About } from "../components";
-import { Input } from "../ui";
+import { Card, About, VideoDetail } from "../components";
+import { Input, Loader } from "../ui";
+
+// https://www.instagram.com/reels/C0UWodpJogI/
 
 function Home() {
   const { t } = useTranslation();
+  const { reel, isLoad } = useSelector((state) => state.reels);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    getVid();
-  }, []);
+  console.log(isLoad);
+
+  // console.log(reel);
 
   return (
     <>
@@ -30,41 +36,8 @@ function Home() {
             </div>
             <Input />
           </div>
-          <div className="w-full block sm:flex justify-start sm:justify-center">
-            <div className="flex max-w-[800px] w-full items-start  xs:items-center sm:items-start justify-center flex-col sm:flex-row gap-[20px]">
-              <>
-                <Card />
-                <div className="flex flex-col gap-[15px] w-full sm:max-w-[250px] px-[10px] sm:px-[15px]">
-                  <a
-                    href="../../public/photo_2024-07-03_14-13-48.jpg"
-                    className="flex items-center justify-center gap-[10px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]"
-                    download={true}
-                  >
-                    <img
-                      width={24}
-                      height={24}
-                      src={icons.downloadIcon}
-                      alt="download icon"
-                    />
-                    {t("download-text")} video
-                  </a>
-                  <a
-                    href="../../public/photo_2024-07-03_14-13-48.jpg"
-                    className="flex items-center justify-center gap-[10px] py-[15px] px-[20px] bg-linear-blue rounded-[8px] cursor-pointer text-white text-[16px] text-normal leading-[100%]"
-                    download={true}
-                  >
-                    <img
-                      width={24}
-                      height={24}
-                      src={icons.downloadIcon}
-                      alt="download icon"
-                    />
-                    {t("download-text")} image
-                  </a>
-                </div>
-              </>
-            </div>
-          </div>
+
+          {reel === null ? null : <>{isLoad ? <Loader /> : <VideoDetail />}</>}
         </div>
       </section>
       <About

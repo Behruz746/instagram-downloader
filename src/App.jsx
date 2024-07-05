@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Error, Home, History, PrivacyPolicy } from "./pages/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainRoot from "./layout/MainRoot";
 import "./sass/main.scss";
-import getVid from "./service/video";
 
 function App() {
-  useEffect(() => {
-    getVid();
-  }, []);
-
   const routers = createBrowserRouter([
     {
       path: "/",
