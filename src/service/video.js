@@ -1,10 +1,24 @@
 import axios from "axios";
 
 const getReelCode = (url) => {
-  const sliceUrl = url.replace("reels", "reel");
-  const regex = /reel\/([^/]+)\//;
-  const match = sliceUrl.match(regex);
-  return match ? match[1] : null;
+  let code;
+
+  // Reel yoki Post URL'lari uchun regex
+  const regexReelOrPost = /(?:reel|reels|p)\/([^/]+)/;
+  const matchReelOrPost = url.match(regexReelOrPost);
+
+  if (matchReelOrPost) {
+    code = matchReelOrPost[1];
+  } else {
+    // Story URL'lari uchun regex
+    const regexStory = /stories\/[^/]+\/([^/]+)/;
+    const matchStory = url.match(regexStory);
+    if (matchStory) {
+      code = matchStory[1];
+    }
+  }
+
+  return code ? `https://www.instagram.com/reel/${code}/` : null;
 };
 
 const ProjectData = {
@@ -17,7 +31,7 @@ const ProjectData = {
         include_insights: "true",
       },
       headers: {
-        "x-rapidapi-key": "547797ee56mshc75eea80117c5d1p14949fjsn519a5f3e4811",
+        "x-rapidapi-key": import.meta.env.VITE_PUBLIC_API_KEY,
         "x-rapidapi-host": "instagram-scraper-api2.p.rapidapi.com",
       },
     };

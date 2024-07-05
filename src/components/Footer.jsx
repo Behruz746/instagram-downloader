@@ -3,9 +3,14 @@ import { useTranslation } from "react-i18next";
 import { styles } from "../util/styles";
 import { icons, soicalContac } from "../constans";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Footer() {
   const { t } = useTranslation();
+  const currentLangCode = Cookies.get("i18next");
+  const setFont = `${
+    currentLangCode === "ru" || "uk" ? "font-arial" : "font-allerta"
+  }`;
 
   return (
     <footer
@@ -27,16 +32,16 @@ function Footer() {
           </h2>
         </div>
 
-        <nav className="flex items-center justify-between gap-[10px] max-w-[250px]  sm:max-w-[206px] w-full">
+        <nav className="flex items-center justify-between gap-[20px] sm:gap-[30px]">
           <NavLink
-            to="/"
-            className="font-allerta text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer"
+            to="/privacy-policy"
+            className={`${setFont} text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer`}
           >
             {t("privacy-policy-title")}
           </NavLink>
           <NavLink
-            to="/"
-            className="font-allerta text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer"
+            to="/contact"
+            className={`${setFont} text-[14px] font-normal leading-normal text-[#615e5e] hover:underline cursor-pointer`}
           >
             {t("contact-page")}
           </NavLink>

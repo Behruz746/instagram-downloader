@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Cookies from "js-cookie";
-import { useSelector, useDispatch } from "react-redux";
-import { getReelStart, getReelSuccess, getReelFailure } from "../slice/reels";
+import { useDispatch } from "react-redux";
+import {
+  getReelStart,
+  getReelSuccess,
+  getReelFailure,
+  getReelView,
+} from "../slice/reels";
 import { setCode } from "../slice/reels";
 import { useTranslation } from "react-i18next";
 import { icons, languages } from "../constans";
@@ -19,14 +24,13 @@ function Input() {
       className="w-full flex items-center h-auto"
       onSubmit={(e) => {
         e.preventDefault();
+        dispatch(getReelView());
         dispatch(setCode(isValue));
         dispatch(getReelStart());
-        setValue("");
         const fetching = async () => {
           try {
             const { data } = await ProjectData.getVideo(isValue);
             dispatch(getReelSuccess(data));
-            console.log(data);
           } catch (error) {
             dispatch(getReelFailure(error));
           }

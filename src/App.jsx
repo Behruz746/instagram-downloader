@@ -1,5 +1,5 @@
 import React from "react";
-import { Error, Home, History, PrivacyPolicy } from "./pages/";
+import { Error, Home, History, PrivacyPolicy, Contact } from "./pages/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainRoot from "./layout/MainRoot";
 import "./sass/main.scss";
@@ -17,6 +17,7 @@ function App() {
           element: <History />,
         },
         { path: "/privacy-policy", element: <PrivacyPolicy /> },
+        { path: "/contact", element: <Contact /> },
       ],
     },
   ]);

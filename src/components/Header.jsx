@@ -13,6 +13,9 @@ function Header() {
   const [country, setCountry] = useState("English");
   const currentLangCode = Cookies.get("i18next") || "en";
   const currentLang = languages.find((l) => l.code === currentLangCode);
+  const setFont = `${
+    currentLangCode === "ru" || "uk" ? "font-arial" : "font-allerta"
+  }`;
 
   const menuRemoveHandler = () => {
     setLangToggle(false);
@@ -82,7 +85,9 @@ function Header() {
             className="w-[50px] h-[32px] sm:w-[63px] sm:h-[44px]"
             alt="insta downloader logo"
           />
-          <h1 className="font-allerta text-[18px] sm:text-[22px] font-normal leading-[100%] text-dark">
+          <h1
+            className={`${setFont} text-[18px] sm:text-[22px] font-normal leading-[100%] text-dark`}
+          >
             Insta Downloader
           </h1>
         </a>
@@ -120,7 +125,7 @@ function Header() {
                   to={item.link}
                   className={`${
                     menuToggle ? "w-full text-center" : ""
-                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
+                  } ${setFont}  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
                   onClick={menuRemoveHandler}
                 >
                   {t(item.text)}
@@ -130,7 +135,7 @@ function Header() {
                   href={item.link}
                   className={`${
                     menuToggle ? "w-full text-center" : ""
-                  } font-allerta  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
+                  } ${setFont}  text-dark text-[18px] font-normal leading-[53px] cursor-pointer hover:underline select-none`}
                   onClick={menuRemoveHandler}
                 >
                   {t(item.text)}
@@ -141,7 +146,7 @@ function Header() {
 
           <div className="flex flex-col relative w-full z-[120] sm:max-w-[150px]">
             <button
-              className={`flex  items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white font-allerta text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none`}
+              className={`flex  items-center justify-center  gap-[5px] py-[15px] px-[20px] bg-linear-blue text-white ${setFont} text-[18px] font-normal leading-[100%] rounded-none sm:rounded-[8px] cursor-pointer select-none`}
               onClick={() => setLangToggle((prev) => !prev)}
             >
               {country}
@@ -171,7 +176,7 @@ function Header() {
               >
                 {languages.map((lang, idx) => (
                   <li
-                    className="py-[20px] sm:py-[10px] px-[7px] text-center  text-white font-allerta text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none"
+                    className={`py-[20px] sm:py-[10px] px-[7px] text-center  text-white ${setFont} text-[18px] font-normal leading-[100%] hover:bg-[#551af8] cursor-pointer select-none`}
                     onClick={() => changeLangHandler(lang.code)}
                     key={idx}
                   >

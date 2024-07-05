@@ -1,15 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 import { images } from "../constans";
 import { styles, textStyles } from "../util/styles";
 import { About, VideoDetail } from "../components";
-import { Input, Loader } from "../ui";
+import { Input, Loader, Err } from "../ui";
 
 function Home() {
   const { t } = useTranslation();
-  const { reel, isLoad } = useSelector((state) => state.reels);
-  console.log(isLoad);
+  const { isLoad, toggleReel, isErr } = useSelector((state) => state.reels);
+  const currentLangCode = Cookies.get("i18next");
+  const setFont = `${
+    currentLangCode === "ru" || "uk" ? "font-arial" : "font-allerta"
+  }`;
 
   return (
     <>
@@ -22,13 +26,21 @@ function Home() {
         >
           <div className="w-full px-[10px] sm:px-[15px] flex flex-col items-start gap-[20px] sm:gap-[40px]">
             <div className="max-w-[608px]">
-              <h1 className={`font-allerta text-dark ${textStyles.title}`}>
+              <h1 className={`${setFont} text-dark ${textStyles.title}`}>
                 {t("input-title")}
               </h1>
             </div>
             <Input />
           </div>
-          {reel === null ? null : <>{isLoad ? <Loader /> : <VideoDetail />}</>}
+          {!toggleReel ? null : (
+            <>
+              {isLoad ? (
+                <Loader />
+              ) : (
+                <>{isErr ? <Err err={isErr} /> : <VideoDetail />}</>
+              )}
+            </>
+          )}
         </div>
       </section>
       <About

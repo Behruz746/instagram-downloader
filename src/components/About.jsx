@@ -1,9 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { styles, textStyles } from "../util/styles";
+import Cookies from "js-cookie";
 
 function About({ img, title, text, reverse }) {
   const { t } = useTranslation();
+  const currentLangCode = Cookies.get("i18next");
+  const setFont = `${
+    currentLangCode === "ru" || "uk" ? "font-arial" : "font-allerta"
+  }`;
 
   return (
     <section id="about" className={`w-full ${styles.sectionMarginY}`}>
@@ -14,13 +19,13 @@ function About({ img, title, text, reverse }) {
       >
         <div className="max-w-[661px] flex flex-col gap-[10px] sm:gap-[18px]">
           <h1
-            className={`${reverse ? "max-w-[611px]" : "max-w-[540px]"} ${
-              textStyles.title2
-            }`}
+            className={`${setFont} ${
+              reverse ? "max-w-[611px]" : "max-w-[540px]"
+            } ${textStyles.title2}`}
           >
             {t(title)}
           </h1>
-          <p className={`${textStyles.text}`}>{t(text)}</p>
+          <p className={`${setFont} ${textStyles.text}`}>{t(text)}</p>
         </div>
         <div className="m-auto sm:m-[0] max-w-[389px] h-auto">
           <img

@@ -10,6 +10,7 @@ export default {
       },
       fontFamily: {
         allerta: ["Allerta"],
+        arial: ["Arial, Helvetica, sans-serif"],
       },
     },
     screens: {
