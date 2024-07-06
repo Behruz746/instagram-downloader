@@ -22,7 +22,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={routers} />;
+  return (
+    <div className="relative">
+      <RouterProvider router={routers} />
+    </div>
+  );
 }
 
 export default App;

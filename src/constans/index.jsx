@@ -17,6 +17,7 @@ const icons = {
   blueLogo: "/img/svg/blue-logo.svg",
   downloadIcon: "/img/svg/download-icon.svg",
   playIcon: "/img/svg/play.svg",
+  coffee: "/img/svg/coffee.svg",
 };
 
 const menu = [

@@ -14,9 +14,9 @@ function PrivacyPolicy() {
     <>
       <section className={`w-full ${styles.sectionMarginY}`}>
         <div
-          className={`${styles.container} flex flex-col gap-[20px] sm:gap-[40px]`}
+          className={`${styles.container} flex flex-col gap-[20px]`}
         >
-          <div className="w-full flex flex-col gap-[15px] sm:gap-[30px]">
+          <div className="w-full flex flex-col">
             <h1 className={`${setFont} ${textStyles.title} text-dark`}>
               {t("privacy-policy-title")}
             </h1>
@@ -25,7 +25,7 @@ function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="w-full flex flex-col gap-[10px] sm:gap-[20px]">
+          <div className="w-full flex flex-col">
             <h1 className={`${setFont} ${textStyles.title2} text-dark`}>
               {t("privacy-policy-personal-title")}
             </h1>
@@ -34,7 +34,7 @@ function PrivacyPolicy() {
             </p>
           </div>
 
-          <div className="w-full flex flex-col gap-[10px] sm:gap-[20px]">
+          <div className="w-full flex flex-col">
             <h1 className={`${setFont} ${textStyles.title2} text-dark`}>
               {t("privacy-policy-non-personal-title")}
             </h1>

@@ -31,7 +31,7 @@ const ProjectData = {
         include_insights: "true",
       },
       headers: {
-        "x-rapidapi-key": import.meta.env.VITE_PUBLIC_API_KEY,
+        "x-rapidapi-key": "547797ee56mshc75eea80117c5d1p14949fjsn519a5f3e4811",
         "x-rapidapi-host": "instagram-scraper-api2.p.rapidapi.com",
       },
     };

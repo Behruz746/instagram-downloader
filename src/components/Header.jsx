@@ -2,11 +2,12 @@ import React, { useState, Fragment, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Cookies from "js-cookie";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { styles } from "../util/styles";
 import { icons, menu, languages, selectLangSwitch } from "../constans";
 
 function Header() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [menuToggle, setMenuToggle] = useState(false);
   const [langToggle, setLangToggle] = useState(false);
@@ -62,6 +63,10 @@ function Header() {
     };
   }, []);
 
+  const toHomeHandler = () => {
+    navigate("/");
+  };
+
   return (
     <header
       id="header"
@@ -74,9 +79,9 @@ function Header() {
       <div
         className={`${styles.container} flex items-center justify-between relative`}
       >
-        <a
-          href="#downloader"
+        <div
           className="flex items-center gap-[10px] cursor-pointer"
+          onClick={() => toHomeHandler()}
         >
           <img
             width={62}
@@ -90,7 +95,7 @@ function Header() {
           >
             Insta Downloader
           </h1>
-        </a>
+        </div>
 
         <div className={`${menuToggle ? "flex" : "sm:hidden"} sm:hidden`}>
           <button

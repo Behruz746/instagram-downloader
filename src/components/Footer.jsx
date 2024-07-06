@@ -14,7 +14,7 @@ function Footer() {
 
   return (
     <footer
-      className={`${styles.borderDarkTop} w-full mt-[30px] sm:mt-[60px] lg:mt-[113px] py-[8px] sm:py-[16px]`}
+      className={`${styles.borderDarkTop} w-full mt-[30px] sm:mt-[60px] lg:mt-[113px] py-[8px] sm:py-[16px] bg-white`}
     >
       <div
         className={`${styles.container} flex flex-col-reverse gap-[8px] sm:flex-row items-center justify-between`}

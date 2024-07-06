@@ -35,7 +35,6 @@ function Input() {
             dispatch(getReelFailure(error));
           }
         };
-
         fetching();
       }}
     >
