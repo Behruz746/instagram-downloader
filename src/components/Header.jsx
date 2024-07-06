@@ -70,7 +70,7 @@ function Header() {
   return (
     <header
       id="header"
-      className={`sticky top-0 left-0 bg-white z-[100] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
+      className={`sticky top-0 left-0 bg-white z-[200] w-full py-[8px] sm:py-[16px] ${styles.borderDarkBottom}`}
     >
       <div
         className={`${langToggle || menuToggle ? "over-box" : "hidden"}`}

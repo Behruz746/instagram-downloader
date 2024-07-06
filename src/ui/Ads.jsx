@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { icons } from "../constans";
 import { textStyles } from "../util/styles";
 import Cookies from "js-cookie";
 
 function Ads() {
+  const { t } = useTranslation();
   const [adToggle, setAdToggle] = useState(false);
   const [time, setTime] = useState(0);
   const intervalIdRef = useRef(null);
@@ -68,11 +70,7 @@ function Ads() {
         </div>
 
         <div className="mt-[10px]">
-          <p className={`${setFont} ${textStyles.text}`}>
-            Bu projectni real qilish uchun bizga mablag kerak agar bizga yordam
-            qilmoqchi bo’lsangiz bizning web saytlar o’zingizni reklamangini
-            qo’yishingiz munkun
-          </p>
+          <p className={`${setFont} ${textStyles.text}`}>{t("ads-text")}</p>
         </div>
 
         <div className="w-full flex items-center justify-center mt-[10px]">
